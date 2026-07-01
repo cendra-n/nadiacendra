@@ -22,32 +22,52 @@ const bricks: Brick[] = [
   {
     title: "Java",
     category: "Técnica",
-    description:
-      "Lenguaje que aprendí en la Tecnicatura y practiqué en simulaciones de proyectos backend. Me gusta su rigor.",
+    description: "Mi motor principal. Backend, POO y rigor.",
   },
   {
     title: "Escucha activa",
     category: "Humana",
-    description:
-      "Desarrollada en años de atención al cliente y venta directa. Escuchar primero, resolver después.",
+    description: "Forjada en venta cara a cara.",
   },
   {
     title: "Python",
     category: "Técnica",
-    description:
-      "Autodidacta por curiosidad. Lo uso para scripts, automatizaciones y pensar en estructuras de datos.",
+    description: "Autodidacta. Scripts y automatizaciones.",
   },
   {
     title: "Comunicación asertiva",
     category: "Humana",
-    description:
-      "Del emprendimiento: aprendí a explicar ideas técnicas sin tecnicismos innecesarios.",
+    description: "Explicar sin tecnicismos, del emprendimiento.",
   },
   {
     title: "Trabajo en equipo",
     category: "Humana",
-    description:
-      "Fábrica y proyectos colaborativos me enseñaron que el resultado mejora cuando se comparte.",
+    description: "7 años de fábrica: el resultado se comparte.",
+  },
+  {
+    title: "SQL",
+    category: "Técnica",
+    description: "Consultas, joins y modelado relacional.",
+  },
+  {
+    title: "Disciplina",
+    category: "Humana",
+    description: "Turnos rotativos enseñan constancia real.",
+  },
+  {
+    title: "Git",
+    category: "Técnica",
+    description: "Control de versiones en proyectos colaborativos.",
+  },
+  {
+    title: "Resolución bajo presión",
+    category: "Humana",
+    description: "Línea de producción: parar cuesta plata.",
+  },
+  {
+    title: "Diseño digital",
+    category: "Híbrida",
+    description: "Etapa freelance: pensar visual y funcional.",
   },
 ];
 
@@ -55,7 +75,7 @@ function Index() {
   return (
     <section className="min-h-screen bg-background px-6 py-20 text-foreground md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 max-w-3xl">
+        <div className="mb-20 max-w-3xl">
           <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
             LÓGICA BACKEND,
             <br />
@@ -66,21 +86,39 @@ function Index() {
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-6 flex items-baseline justify-between border-b border-border pb-4">
+          <h2 className="font-display text-xs font-bold tracking-[0.25em] uppercase">
+            / Muro de habilidades
+          </h2>
+          <span className="text-xs tracking-widest text-muted-foreground uppercase">
+            Hover ↗
+          </span>
+        </div>
+
+        <div
+          className="grid gap-px bg-border"
+          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}
+        >
           {bricks.map((brick) => (
             <div
               key={brick.title}
-              className="group relative flex min-h-[160px] flex-col justify-between overflow-hidden bg-secondary p-5 text-secondary-foreground transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus-within:bg-primary focus-within:text-primary-foreground"
               tabIndex={0}
+              className="group relative flex h-20 cursor-default items-center justify-center bg-background px-3 text-center transition-colors duration-150 hover:bg-primary focus:bg-primary focus:outline-none"
             >
-              <span className="text-xs font-medium tracking-widest text-muted-foreground uppercase transition-colors group-hover:text-primary-foreground/70 group-focus-within:text-primary-foreground/70">
-                {brick.category}
+              <span className="font-display text-sm font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary-foreground group-focus:text-primary-foreground">
+                {brick.title}
               </span>
-              <div>
-                <h3 className="font-display text-2xl font-bold">{brick.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+
+              <div
+                role="tooltip"
+                className="pointer-events-none absolute left-1/2 top-full z-20 mt-2 w-56 -translate-x-1/2 border border-primary bg-background px-3 py-2 text-left opacity-0 shadow-[4px_4px_0_0_var(--color-primary)] transition-opacity duration-150 group-hover:opacity-100 group-focus:opacity-100"
+              >
+                <span className="block text-[10px] font-bold tracking-widest text-primary uppercase">
+                  {brick.category}
+                </span>
+                <span className="mt-1 block text-xs leading-snug text-foreground">
                   {brick.description}
-                </p>
+                </span>
               </div>
             </div>
           ))}
@@ -89,3 +127,4 @@ function Index() {
     </section>
   );
 }
+
