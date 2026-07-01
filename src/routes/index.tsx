@@ -86,43 +86,80 @@ function Index() {
           </p>
         </div>
 
-        <div className="mb-6 flex items-baseline justify-between border-b border-border pb-4">
-          <h2 className="font-display text-xs font-bold tracking-[0.25em] uppercase">
-            / Muro de habilidades
-          </h2>
-          <span className="text-xs tracking-widest text-muted-foreground uppercase">
-            Hover ↗
-          </span>
-        </div>
+        <div className="relative overflow-hidden bg-white px-6 py-16 text-black md:px-12 md:py-20">
+          {/* Marco geométrico — esquina superior izquierda */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute top-0 left-0 h-24 w-40 bg-black"
+            style={{ clipPath: "polygon(0 0, 100% 0, 60% 100%, 0 100%)" }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute top-0 left-0 h-16 w-56 bg-primary"
+            style={{ clipPath: "polygon(0 0, 100% 0, 80% 100%, 0 100%)" }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute top-0 left-24 h-40 w-3 origin-top-left rotate-[20deg] bg-primary"
+          />
 
-        <div
-          className="grid gap-px bg-border"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}
-        >
-          {bricks.map((brick) => (
-            <div
-              key={brick.title}
-              tabIndex={0}
-              className="group relative flex h-20 cursor-default items-center justify-center bg-background px-3 text-center transition-colors duration-150 hover:bg-primary focus:bg-primary focus:outline-none"
-            >
-              <span className="font-display text-sm font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary-foreground group-focus:text-primary-foreground">
-                {brick.title}
+          {/* Marco geométrico — esquina inferior derecha */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute right-0 bottom-0 h-24 w-40 bg-black"
+            style={{ clipPath: "polygon(40% 0, 100% 0, 100% 100%, 0 100%)" }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute right-0 bottom-0 h-16 w-56 bg-primary"
+            style={{ clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0 100%)" }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute right-24 bottom-0 h-40 w-3 origin-bottom-right -rotate-[20deg] bg-primary"
+          />
+
+          <div className="relative z-10">
+            <div className="mb-8 flex items-baseline justify-between border-b border-black/20 pb-4">
+              <h2 className="font-display text-xs font-bold tracking-[0.25em] text-black uppercase">
+                / Muro de habilidades
+              </h2>
+              <span className="text-xs tracking-widest text-black/50 uppercase">
+                Hover ↗
               </span>
-
-              <div
-                role="tooltip"
-                className="pointer-events-none absolute left-1/2 top-full z-20 mt-2 w-56 -translate-x-1/2 border border-primary bg-background px-3 py-2 text-left opacity-0 shadow-[4px_4px_0_0_var(--color-primary)] transition-opacity duration-150 group-hover:opacity-100 group-focus:opacity-100"
-              >
-                <span className="block text-[10px] font-bold tracking-widest text-primary uppercase">
-                  {brick.category}
-                </span>
-                <span className="mt-1 block text-xs leading-snug text-foreground">
-                  {brick.description}
-                </span>
-              </div>
             </div>
-          ))}
+
+            <div
+              className="grid gap-2"
+              style={{ gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))" }}
+            >
+              {bricks.map((brick) => (
+                <div
+                  key={brick.title}
+                  tabIndex={0}
+                  className="group relative flex h-20 cursor-default items-center justify-center bg-black px-3 text-center transition-colors duration-150 hover:bg-primary focus:bg-primary focus:outline-none"
+                >
+                  <span className="font-display text-sm font-semibold tracking-tight text-white">
+                    {brick.title}
+                  </span>
+
+                  <div
+                    role="tooltip"
+                    className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 w-56 -translate-x-1/2 border-2 border-black bg-white px-3 py-2 text-left opacity-0 shadow-[4px_4px_0_0_var(--color-primary)] transition-opacity duration-150 group-hover:opacity-100 group-focus:opacity-100"
+                  >
+                    <span className="block text-[10px] font-bold tracking-widest text-primary uppercase">
+                      {brick.category}
+                    </span>
+                    <span className="mt-1 block text-xs leading-snug text-black">
+                      {brick.description}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
   );
