@@ -101,7 +101,7 @@ function ProyectoDetalle() {
         </Section>
         <Section label="Tecnologías">
           <ul className="flex flex-wrap gap-2">
-            {project.stack.map((s) => (
+            {project.stack.map((s: string) => (
               <li
                 key={s}
                 className="border border-foreground/20 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-foreground/80 transition-colors hover:border-primary hover:text-primary"
