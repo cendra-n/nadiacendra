@@ -150,7 +150,7 @@ function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-16 text-center font-mono text-[10px] uppercase tracking-[0.24em] text-foreground/40"
+          className="mt-16 text-center font-mono text-[10px] uppercase tracking-[0.24em] text-primary"
         >
           Deslizá el mouse sobre los ladrillos rojos y conoce un poco más sobre mis habilidades
         </motion.p>
