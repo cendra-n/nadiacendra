@@ -38,10 +38,14 @@ export function Brick({
 
   const trigger = () => {
     if (exploded) return;
-    setWord(BRICK_WORDS[Math.floor(Math.random() * BRICK_WORDS.length)]);
+    // Elegir una palabra distinta a la anterior en este mismo ladrillo
+    const pool = BRICK_WORDS.filter((w) => w !== word);
+    const next = pool[Math.floor(Math.random() * pool.length)];
+    setWord(next);
     setExploded(true);
     if (timer.current) window.clearTimeout(timer.current);
-    timer.current = window.setTimeout(() => setExploded(false), 2200);
+    // Duración total ~1.75s: la palabra queda visible entre 1.5s y 2s
+    timer.current = window.setTimeout(() => setExploded(false), 1750);
   };
 
   return (
