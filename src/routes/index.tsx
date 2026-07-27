@@ -152,7 +152,7 @@ function Landing() {
           transition={{ duration: 0.6, delay: 0.9 }}
           className="mt-16 text-center font-mono text-[10px] uppercase tracking-[0.24em] text-foreground/40"
         >
-          Un ladrillo a la vez · Grand Bourg, Argentina
+          Deslizá el mouse sobre los ladrillos rojos y conoce un poco más sobre mis habilidades
         </motion.p>
       </section>
     </div>
