@@ -1,6 +1,6 @@
 export const LINKS = {
-  github: "https://github.com/",
-  linkedin: "https://www.linkedin.com/",
+  github: "https://github.com/cendra-n",
+  linkedin: "https://www.linkedin.com/in/nadia-cendra/",
   email: "nadia.cendra@example.com",
   cv: "/cv-nadia-cendra.pdf",
 };
@@ -46,8 +46,7 @@ export const TIMELINE = [
   {
     period: "2026 — hoy",
     title: "Backend Developer en formación",
-    detail:
-      "Cerca de 6 meses de práctica en simulaciones y entornos IT colaborativos con Java, Spring Boot y Python.",
+    detail: "Cerca de 6 meses de práctica en simulaciones y entornos IT colaborativos con Java, Spring Boot y Python.",
   },
   {
     period: "2023 — 2025",
@@ -58,8 +57,7 @@ export const TIMELINE = [
   {
     period: "2016 — 2023",
     title: "Operaria de fábrica",
-    detail:
-      "Siete años sosteniendo horarios, disciplina, trabajo bajo presión y compromiso con el equipo.",
+    detail: "Siete años sosteniendo horarios, disciplina, trabajo bajo presión y compromiso con el equipo.",
   },
 ];
 
@@ -95,8 +93,7 @@ export const PROJECTS: Project[] = [
     name: "AURA",
     tagline: "Backend Java dentro de una práctica profesional intensiva.",
     context: "Smart Projects — Foo Talent Group",
-    problem:
-      "Practicar el flujo real de un equipo backend: convenciones, ramas, pull requests y revisiones cruzadas.",
+    problem: "Practicar el flujo real de un equipo backend: convenciones, ramas, pull requests y revisiones cruzadas.",
     solution:
       "Sumé código en Spring Boot dentro del sistema del programa, integrada al ritmo de un equipo con seniority mixta.",
     stack: ["Java", "Spring Boot", "Git", "GitHub"],
@@ -109,8 +106,7 @@ export const PROJECTS: Project[] = [
     context: "Proyecto personal",
     problem:
       "Necesitaba practicar por mi cuenta un CRUD completo: entidades, relaciones, operaciones de stock y pruebas.",
-    solution:
-      "Modelé el dominio, implementé la API, escribí pruebas y sostuve el proyecto de principio a fin.",
+    solution: "Modelé el dominio, implementé la API, escribí pruebas y sostuve el proyecto de principio a fin.",
     stack: ["Java", "Spring Boot", "MySQL", "REST APIs"],
     learned: "Sostener un proyecto sin nadie que me pase el enunciado. Equivocarme, corregir y seguir.",
   },
