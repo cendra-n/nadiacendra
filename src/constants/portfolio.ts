@@ -41,7 +41,7 @@ export const TECH_SKILLS = [
 ];
 
 export const HUMAN_SKILLS = [
-  "Comunicación",
+  "Comunicación asertiva",
   "Empatía",
   "Adaptabilidad",
   "Responsabilidad",
@@ -49,6 +49,8 @@ export const HUMAN_SKILLS = [
   "Trabajo en equipo",
   "Resolución de problemas",
   "Aprendizaje continuo",
+  "Autonomía",
+  "Atención al detalle",
 ];
 
 export const TIMELINE = [
