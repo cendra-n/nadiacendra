@@ -11,16 +11,18 @@ export function BackHome({ label }: { label?: string }) {
       initial={{ opacity: 0, x: -8 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
+      className="fixed bottom-5 left-5 z-50 md:bottom-7 md:left-7"
     >
       <Link
         to="/"
-        className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/70 transition-colors hover:text-primary"
+        aria-label={text}
+        className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-background/85 px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/80 shadow-[0_2px_12px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-colors hover:border-primary hover:text-primary"
       >
         <ArrowLeft
           size={14}
           className="transition-transform group-hover:-translate-x-1"
         />
-        {text}
+        <span className="hidden sm:inline">{text}</span>
       </Link>
     </motion.div>
   );

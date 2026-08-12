@@ -56,11 +56,7 @@ export function PageShell({ children, showBack = true, eyebrow }: Props) {
         transition={{ duration: 0.45, ease: "easeOut" }}
         className="relative z-20 mx-auto max-w-4xl px-6 pb-24 pt-8 md:px-10"
       >
-        {showBack && (
-          <div className="mb-10">
-            <BackHome />
-          </div>
-        )}
+        {showBack && <BackHome />}
         {eyebrow && (
           <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
             {eyebrow}
