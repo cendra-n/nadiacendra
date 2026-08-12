@@ -19,7 +19,7 @@ export function LanguageToggle() {
           transition={{ duration: 0.22, ease: "easeOut" }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          {lang === "es" ? "EN" : "ES"}
+          {lang === "es" ? "ES" : "EN"}
         </motion.span>
       </AnimatePresence>
     </button>
