@@ -4,6 +4,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { PageShell } from "@/components/PageShell";
 import { LINKS } from "@/constants/portfolio";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -24,16 +25,17 @@ export const Route = createFileRoute("/contacto")({
   component: Contacto,
 });
 
-const schema = z.object({
-  nombre: z.string().trim().min(2, "Contame tu nombre").max(80, "Demasiado largo"),
-  email: z.string().trim().email("Email inválido").max(200),
-  asunto: z.string().trim().min(3, "Un asunto breve").max(120),
-  mensaje: z.string().trim().min(10, "Contame algo más").max(1500, "Demasiado largo"),
-});
-
-type Field = keyof z.infer<typeof schema>;
+type Field = "nombre" | "email" | "asunto" | "mensaje";
 
 function Contacto() {
+  const { t } = useI18n();
+  const e = t.contact.errors;
+  const schema = z.object({
+    nombre: z.string().trim().min(2, e.name).max(80, e.tooLong),
+    email: z.string().trim().email(e.emailInvalid).max(200),
+    asunto: z.string().trim().min(3, e.subject).max(120),
+    mensaje: z.string().trim().min(10, e.message).max(1500, e.tooLong),
+  });
   const [values, setValues] = useState<Record<Field, string>>({
     nombre: "",
     email: "",
@@ -72,13 +74,12 @@ function Contacto() {
     "w-full border-b-2 border-foreground/20 bg-transparent py-3 font-sans text-[15px] text-foreground placeholder:text-foreground/40 transition-colors focus:border-primary focus:outline-none";
 
   return (
-    <PageShell eyebrow="Contacto">
+    <PageShell eyebrow={t.contact.eyebrow}>
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-        Hablemos. <span className="text-primary">Sin humo.</span>
+        {t.contact.title1}<span className="text-primary">{t.contact.title2}</span>
       </h1>
       <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/70">
-        Estoy abierta a oportunidades junior en backend, prácticas y equipos que valoren compromiso y
-        ganas reales de aprender.
+        {t.contact.lead}
       </p>
 
       <div className="mt-14 grid gap-14 md:grid-cols-[1.4fr_1fr] md:gap-20">
@@ -89,7 +90,7 @@ function Contacto() {
           onSubmit={onSubmit}
           noValidate
           className="space-y-6"
-          aria-label="Formulario de contacto"
+          aria-label={t.contact.formLabel}
         >
           {(["nombre", "email", "asunto"] as const).map((f) => (
             <div key={f}>
@@ -97,7 +98,7 @@ function Contacto() {
                 htmlFor={f}
                 className="block font-mono text-[10px] uppercase tracking-[0.28em] text-foreground/60"
               >
-                {f === "nombre" ? "Nombre" : f === "email" ? "Correo electrónico" : "Asunto"}
+                {f === "nombre" ? t.contact.name : f === "email" ? t.contact.email : t.contact.subject}
               </label>
               <input
                 id={f}
@@ -122,7 +123,7 @@ function Contacto() {
               htmlFor="mensaje"
               className="block font-mono text-[10px] uppercase tracking-[0.28em] text-foreground/60"
             >
-              Mensaje
+              {t.contact.message}
             </label>
             <textarea
               id="mensaje"
@@ -146,7 +147,7 @@ function Contacto() {
             type="submit"
             className="inline-flex items-center gap-2 bg-primary px-6 py-3 font-mono text-[11px] uppercase tracking-[0.24em] text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           >
-            Enviar mensaje <span aria-hidden>→</span>
+            {t.contact.send} <span aria-hidden>→</span>
           </motion.button>
 
           {sent && (
@@ -155,7 +156,7 @@ function Contacto() {
               animate={{ opacity: 1 }}
               className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary"
             >
-              Se abrió tu cliente de email. ¡Gracias!
+              {t.contact.sent}
             </motion.p>
           )}
         </motion.form>
@@ -167,7 +168,7 @@ function Contacto() {
           className="space-y-6"
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-foreground/60">
-            O escribime por acá
+            {t.contact.asideTitle}
           </p>
           <ul className="space-y-4 font-mono text-[12px] uppercase tracking-[0.2em]">
             {[
