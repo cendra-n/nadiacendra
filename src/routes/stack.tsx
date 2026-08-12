@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/PageShell";
-import { TECH_SKILLS, HUMAN_SKILLS } from "@/constants/portfolio";
+import { TECH_SKILLS } from "@/constants/portfolio";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 export const Route = createFileRoute("/stack")({
   head: () => ({
@@ -49,20 +50,20 @@ function SkillItem({ label, index, variant }: { label: string; index: number; va
 }
 
 function Stack() {
+  const { t } = useI18n();
   return (
-    <PageShell eyebrow="02 · Stack & habilidades">
+    <PageShell eyebrow={t.stack.eyebrow}>
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-        Herramientas <span className="text-primary">y</span> personas.
+        {t.stack.title1}<span className="text-primary">{t.stack.and}</span>{t.stack.title2}
       </h1>
       <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/70">
-        Lo técnico y lo humano tienen el mismo peso. Todavía estoy aprendiendo, y por eso lo listo con
-        honestidad.
+        {t.stack.lead}
       </p>
 
       <div className="mt-14 grid gap-14 md:grid-cols-2 md:gap-16">
         <section>
           <h2 className="font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
-            Tecnologías
+            {t.stack.tech}
           </h2>
           <ul className="mt-6">
             {TECH_SKILLS.map((s, i) => (
@@ -73,10 +74,10 @@ function Stack() {
 
         <section>
           <h2 className="font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
-            Habilidades humanas
+            {t.stack.human}
           </h2>
           <ul className="mt-6">
-            {HUMAN_SKILLS.map((s, i) => (
+            {t.stack.humanSkills.map((s, i) => (
               <SkillItem key={s} label={s} index={i} variant="human" />
             ))}
           </ul>

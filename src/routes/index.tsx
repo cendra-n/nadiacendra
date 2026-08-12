@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import { BrickColumns } from "@/components/BrickColumns";
 import { ScrollBricks } from "@/components/ScrollBricks";
 import { LINKS } from "@/constants/portfolio";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,13 +28,14 @@ export const Route = createFileRoute("/")({
   component: Landing,
 });
 
-const NAV_LINKS = [
-  { to: "/sobre-mi", label: "Sobre mí" },
-  { to: "/stack", label: "Stack" },
-  { to: "/proyectos", label: "Proyectos" },
-] as const;
-
 function Landing() {
+  const { t } = useI18n();
+  const navLinks = [
+    { to: "/sobre-mi", label: t.nav.about },
+    { to: "/stack", label: t.nav.stack },
+    { to: "/proyectos", label: t.nav.projects },
+  ] as const;
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground antialiased">
       <ScrollBricks />
@@ -43,28 +46,29 @@ function Landing() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative z-30 mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10"
+        className="relative z-30 mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-6 md:px-10"
       >
         <p className="font-display text-sm font-semibold leading-tight tracking-tight">
-          Lógica backend.
+          {t.brand.line1}
           <br />
-          <span className="text-primary">Valor humano.</span>
+          <span className="text-primary">{t.brand.line2}</span>
         </p>
-        <nav className="flex items-center gap-2 md:gap-3">
+        <nav className="flex items-center gap-2 md:gap-2.5">
           <a
             href={LINKS.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-primary bg-primary px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+            className="rounded-full border border-primary bg-primary px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
           >
-            LinkedIn
+            {t.nav.linkedin}
           </a>
           <Link
             to="/contacto"
-            className="rounded-full border border-primary bg-primary px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+            className="rounded-full border border-primary bg-primary px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
           >
-            Contacto
+            {t.nav.contact}
           </Link>
+          <LanguageToggle />
           <ThemeToggle />
         </nav>
       </motion.header>
@@ -86,7 +90,7 @@ function Landing() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-5 font-display text-lg font-semibold tracking-tight md:text-xl"
         >
-          Backend Developer
+          {t.home.role}
         </motion.p>
         <motion.p
           initial={{ opacity: 0 }}
@@ -94,7 +98,7 @@ function Landing() {
           transition={{ duration: 0.6, delay: 0.35 }}
           className="mt-1 font-mono text-[11px] uppercase tracking-[0.24em] text-foreground/60"
         >
-          Técnica Analista de Sistemas
+          {t.home.subrole}
         </motion.p>
 
         <motion.p
@@ -103,12 +107,11 @@ function Landing() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="mx-auto mt-10 max-w-xl text-[15px] leading-relaxed text-foreground/80 md:text-base"
         >
-          Doy mis primeros pasos profesionales en desarrollo, con cerca de{" "}
-          <strong className="font-semibold text-foreground">5 meses de práctica</strong> en simulaciones y
-          entornos IT colaborativos, sostenidos por{" "}
-          <strong className="font-semibold text-foreground">7 años de trabajo en fábrica</strong> y una
-          etapa emprendedora en venta directa y diseño digital. Todavía estoy creciendo técnicamente. Ese
-          es, justamente, el punto de partida.
+          {t.home.intro1}
+          <strong className="font-semibold text-foreground">{t.home.months}</strong>
+          {t.home.intro2}
+          <strong className="font-semibold text-foreground">{t.home.factory}</strong>
+          {t.home.intro3}
         </motion.p>
       </section>
 
@@ -117,12 +120,12 @@ function Landing() {
         <div className="mb-6 flex items-center gap-3">
           <span className="h-px flex-1 bg-foreground/20" />
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-foreground/50">
-            Explorá
+            {t.nav.explore}
           </span>
           <span className="h-px flex-1 bg-foreground/20" />
         </div>
         <div className="grid gap-4 md:grid-cols-3">
-          {NAV_LINKS.map((n, i) => (
+          {navLinks.map((n, i) => (
             <motion.div
               key={n.to}
               initial={{ opacity: 0, y: 14 }}
@@ -152,7 +155,7 @@ function Landing() {
           transition={{ duration: 0.6, delay: 0.9 }}
           className="mt-16 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-primary"
         >
-          Deslizá el mouse sobre los ladrillos rojos y conoce un poco más sobre mis habilidades
+          {t.home.hint}
         </motion.p>
       </section>
     </div>
