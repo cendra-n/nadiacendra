@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/PageShell";
-import { TIMELINE } from "@/constants/portfolio";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 export const Route = createFileRoute("/sobre-mi")({
   head: () => ({
@@ -23,24 +23,16 @@ export const Route = createFileRoute("/sobre-mi")({
   component: SobreMi,
 });
 
-const STORY = [
-  "Todavía estoy construyendo mi camino en IT.",
-  "Mi experiencia técnica es inicial: cerca de seis meses de práctica en simulaciones y entornos IT colaborativos con Java, Spring Boot y Python.",
-  "No vengo a aparentar seniority. Vengo a sumar, aprender y sostener el trabajo con criterio.",
-  "Antes de programar pasé siete años en fábrica. Ahí aprendí disciplina, responsabilidad, trabajo bajo presión y compromiso.",
-  "Después emprendí en venta directa y diseño gráfico. Allí desarrollé comunicación, escucha activa y organización.",
-  "Hoy combino esas experiencias con el desarrollo backend. Mi objetivo es seguir creciendo dentro de un equipo donde pueda aportar mientras continúo aprendiendo.",
-];
-
 function SobreMi() {
+  const { t } = useI18n();
   return (
-    <PageShell eyebrow="01 · Sobre mí">
+    <PageShell eyebrow={t.about.eyebrow}>
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-        Un camino que se construye <span className="text-primary">un ladrillo a la vez.</span>
+        {t.about.title1}<span className="text-primary">{t.about.title2}</span>
       </h1>
 
       <div className="mt-12 space-y-5 text-[15px] leading-relaxed text-foreground/85 md:text-base">
-        {STORY.map((p, i) => (
+        {t.about.story.map((p, i) => (
           <motion.p
             key={i}
             initial={{ opacity: 0, y: 10 }}
@@ -56,10 +48,10 @@ function SobreMi() {
       {/* Timeline */}
       <div className="mt-20">
         <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
-          Línea de tiempo
+          {t.about.timelineLabel}
         </p>
         <ol className="relative mt-8 border-l-2 border-primary/70 pl-8">
-          {TIMELINE.map((e, i) => (
+          {t.about.timeline.map((e, i) => (
             <motion.li
               key={e.period}
               initial={{ opacity: 0, x: -12 }}

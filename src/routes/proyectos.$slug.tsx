@@ -2,6 +2,7 @@ import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/PageShell";
 import { PROJECTS } from "@/constants/portfolio";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 export const Route = createFileRoute("/proyectos/$slug")({
   loader: ({ params }) => {
@@ -29,24 +30,29 @@ export const Route = createFileRoute("/proyectos/$slug")({
       ],
     };
   },
-  notFoundComponent: () => (
+  notFoundComponent: () => <ProyectoNoEncontrado />,
+  component: ProyectoDetalle,
+});
+
+function ProyectoNoEncontrado() {
+  const { t } = useI18n();
+  return (
     <PageShell eyebrow="404">
       <h1 className="font-display text-3xl font-bold tracking-tight">
-        Ese proyecto no existe.
+        {t.projects.notFoundTitle}
       </h1>
       <p className="mt-4 text-foreground/70">
-        Puede que el enlace esté roto o que el proyecto todavía no esté publicado.
+        {t.projects.notFoundText}
       </p>
       <Link
         to="/proyectos"
         className="mt-8 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-primary"
       >
-        ← Ver todos los proyectos
+        {t.projects.notFoundLink}
       </Link>
     </PageShell>
-  ),
-  component: ProyectoDetalle,
-});
+  );
+}
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -59,18 +65,20 @@ function Section({ label, children }: { label: string; children: React.ReactNode
 
 function ProyectoDetalle() {
   const { project } = Route.useLoaderData();
+  const { t } = useI18n();
+  const c = t.projects.items[project.slug as keyof typeof t.projects.items];
 
   return (
-    <PageShell eyebrow={project.context}>
+    <PageShell eyebrow={c.context}>
       <motion.h1
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="font-display text-4xl font-bold leading-tight tracking-tight md:text-6xl"
       >
-        {project.name}
+        {c.name}
       </motion.h1>
-      <p className="mt-4 max-w-xl text-lg text-foreground/70">{project.tagline}</p>
+      <p className="mt-4 max-w-xl text-lg text-foreground/70">{c.tagline}</p>
 
       {/* Placeholder captura */}
       <motion.div
@@ -81,25 +89,25 @@ function ProyectoDetalle() {
       >
         <div>
           <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-foreground/40">
-            Captura del proyecto
+            {t.projects.shot}
           </p>
           <p className="mt-2 font-display text-sm text-foreground/50">
-            (placeholder — próximamente)
+            {t.projects.shotNote}
           </p>
         </div>
       </motion.div>
 
       <div className="mt-14 space-y-10">
-        <Section label="Problema">
-          <p>{project.problem}</p>
+        <Section label={t.projects.problem}>
+          <p>{c.problem}</p>
         </Section>
-        <Section label="Solución">
-          <p>{project.solution}</p>
+        <Section label={t.projects.solution}>
+          <p>{c.solution}</p>
         </Section>
-        <Section label="Aprendizajes">
-          <p>{project.learned}</p>
+        <Section label={t.projects.learned}>
+          <p>{c.learned}</p>
         </Section>
-        <Section label="Tecnologías">
+        <Section label={t.projects.techs}>
           <ul className="flex flex-wrap gap-2">
             {project.stack.map((s: string) => (
               <li
@@ -121,11 +129,11 @@ function ProyectoDetalle() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 bg-primary px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-foreground"
           >
-            Ver en GitHub <span aria-hidden>↗</span>
+            {t.projects.github} <span aria-hidden>↗</span>
           </a>
         ) : (
           <span className="inline-flex items-center gap-2 border border-foreground/20 px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-            Repositorio no público
+            {t.projects.noRepo}
           </span>
         )}
         {project.demo && (
@@ -135,7 +143,7 @@ function ProyectoDetalle() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 border border-foreground px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors hover:bg-foreground hover:text-background"
           >
-            Ver demo <span aria-hidden>↗</span>
+            {t.projects.demo} <span aria-hidden>↗</span>
           </a>
         )}
       </div>

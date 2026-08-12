@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { useI18n } from "@/i18n/LanguageProvider";
 
-export function BackHome({ label = "Volver al inicio" }: { label?: string }) {
+export function BackHome({ label }: { label?: string }) {
+  const { t } = useI18n();
+  const text = label ?? t.nav.back;
   return (
     <motion.div
       initial={{ opacity: 0, x: -8 }}
@@ -17,7 +20,7 @@ export function BackHome({ label = "Volver al inicio" }: { label?: string }) {
           size={14}
           className="transition-transform group-hover:-translate-x-1"
         />
-        {label}
+        {text}
       </Link>
     </motion.div>
   );
