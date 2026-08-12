@@ -7,6 +7,7 @@ interface BrickProps {
   driftDuration?: number;
   driftAmplitude?: number;
   delay?: number;
+  wordAnchor?: "left" | "center" | "right";
 }
 
 const FRAGMENTS = [
@@ -27,6 +28,7 @@ export function Brick({
   driftDuration = 9,
   driftAmplitude = 18,
   delay = 0,
+  wordAnchor = "center",
 }: BrickProps) {
   const [exploded, setExploded] = useState(false);
   const [word, setWord] = useState(() => BRICK_WORDS[Math.floor(Math.random() * BRICK_WORDS.length)]);
@@ -47,6 +49,16 @@ export function Brick({
     // Duración total ~1.75s: la palabra queda visible entre 1.5s y 2s
     timer.current = window.setTimeout(() => setExploded(false), 1750);
   };
+
+  const horizontalAnchor =
+    wordAnchor === "left"
+      ? "left-0"
+      : wordAnchor === "right"
+        ? "right-0"
+        : "left-1/2 -translate-x-1/2";
+
+  const safeMaxWidth =
+    wordAnchor === "center" ? "calc(100vw - 32px)" : "calc(100vw - 40px)";
 
   return (
     <motion.div
@@ -100,7 +112,11 @@ export function Brick({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
             transition={{ duration: 0.3, delay: 0.12 }}
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-primary"
+            className={`pointer-events-none absolute top-1/2 block -translate-y-1/2 whitespace-nowrap font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-primary ${horizontalAnchor}`}
+            style={{
+              maxWidth: safeMaxWidth,
+              overflow: "visible",
+            }}
           >
             {word}
           </motion.span>
