@@ -67,7 +67,7 @@ export const dict = {
       tech: "Tecnologías",
       human: "Habilidades humanas",
       humanSkills: [
-        "Comunicación",
+        "Comunicación asertiva",
         "Empatía",
         "Adaptabilidad",
         "Responsabilidad",
@@ -75,6 +75,8 @@ export const dict = {
         "Trabajo en equipo",
         "Resolución de problemas",
         "Aprendizaje continuo",
+        "Autonomía",
+        "Atención al detalle",
       ],
     },
     projects: {
