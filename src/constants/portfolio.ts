@@ -24,15 +24,20 @@ export const BRICK_WORDS = [
 export const TECH_SKILLS = [
   "Java",
   "Spring Boot",
+  "Hibernate/JPA",
   "Python",
+  "Django",
   "Git",
   "GitHub",
   "Postman",
   "MySQL",
+  "PostgreSQL",
   "SQL",
   "REST APIs",
+  "Swagger",
+  "Docker",
   "TypeScript",
-  "Angular",
+  "Angular (básico)",
 ];
 
 export const HUMAN_SKILLS = [
