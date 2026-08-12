@@ -29,6 +29,7 @@ export function BrickColumns() {
               driftDuration={b.duration}
               delay={b.delay}
               driftAmplitude={b.amplitude}
+              wordAnchor="left"
             />
           ))}
         </div>
@@ -44,6 +45,7 @@ export function BrickColumns() {
               driftDuration={b.duration}
               delay={b.delay}
               driftAmplitude={b.amplitude}
+              wordAnchor="right"
             />
           ))}
         </div>
