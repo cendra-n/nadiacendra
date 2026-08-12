@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { BRICK_WORDS } from "@/constants/portfolio";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 interface BrickProps {
   size?: "sm" | "md";
@@ -30,8 +30,11 @@ export function Brick({
   delay = 0,
   wordAnchor = "center",
 }: BrickProps) {
+  const { t } = useI18n();
+  const words = t.brickWords;
   const [exploded, setExploded] = useState(false);
-  const [word, setWord] = useState(() => BRICK_WORDS[Math.floor(Math.random() * BRICK_WORDS.length)]);
+  const [wordIndex, setWordIndex] = useState(() => Math.floor(Math.random() * 13));
+  const word = words[wordIndex % words.length];
   const timer = useRef<number | null>(null);
 
   useEffect(() => () => { if (timer.current) window.clearTimeout(timer.current); }, []);
@@ -41,9 +44,9 @@ export function Brick({
   const trigger = () => {
     if (exploded) return;
     // Elegir una palabra distinta a la anterior en este mismo ladrillo
-    const pool = BRICK_WORDS.filter((w) => w !== word);
-    const next = pool[Math.floor(Math.random() * pool.length)];
-    setWord(next);
+    let next = wordIndex;
+    while (next === wordIndex) next = Math.floor(Math.random() * words.length);
+    setWordIndex(next);
     setExploded(true);
     if (timer.current) window.clearTimeout(timer.current);
     // Duración total ~1.75s: la palabra queda visible entre 1.5s y 2s
