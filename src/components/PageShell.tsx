@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageToggle } from "./LanguageToggle";
 import { ScrollBricks } from "./ScrollBricks";
 import { BackHome } from "./BackHome";
 import { LINKS } from "@/constants/portfolio";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 interface Props {
   children: ReactNode;
@@ -13,37 +15,40 @@ interface Props {
 }
 
 export function PageShell({ children, showBack = true, eyebrow }: Props) {
+  const { t } = useI18n();
   return (
     <div className="relative min-h-screen bg-background text-foreground antialiased">
       <ScrollBricks />
 
-      <header className="relative z-30 mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10">
+      <header className="relative z-30 mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-6 md:px-10">
         <Link
           to="/"
           className="font-display text-sm font-semibold leading-tight tracking-tight"
         >
-          Lógica backend.
+          {t.brand.line1}
           <br />
-          <span className="text-primary">Valor humano.</span>
+          <span className="text-primary">{t.brand.line2}</span>
         </Link>
-        <nav className="flex items-center gap-2 md:gap-3">
+        <nav className="flex items-center gap-2 md:gap-2.5">
           <a
             href={LINKS.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-primary bg-primary px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+            className="rounded-full border border-primary bg-primary px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
           >
-            LinkedIn
+            {t.nav.linkedin}
           </a>
           <Link
             to="/contacto"
-            className="rounded-full border border-primary bg-primary px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+            className="rounded-full border border-primary bg-primary px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
           >
-            Contacto
+            {t.nav.contact}
           </Link>
+          <LanguageToggle />
           <ThemeToggle />
         </nav>
       </header>
+
 
       <motion.main
         initial={{ opacity: 0, y: 16 }}
