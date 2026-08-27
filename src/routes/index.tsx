@@ -118,11 +118,11 @@ function Landing() {
       {/* Navegación principal — botones grandes */}
       <section className="relative z-20 mx-auto max-w-4xl px-6 pb-24 md:px-10">
         <div className="mb-6 flex items-center gap-3">
-          <span className="h-px flex-1 bg-foreground/20" />
+          <span className="h-px flex-1 bg-mint" />
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-foreground/50">
             {t.nav.explore}
           </span>
-          <span className="h-px flex-1 bg-foreground/20" />
+          <span className="h-px flex-1 bg-mint" />
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {navLinks.map((n, i) => (
@@ -153,9 +153,11 @@ function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-16 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-primary"
+          className="mt-16 flex items-center justify-center gap-2 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-primary"
         >
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-pink" />
           {t.home.hint}
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-mint" />
         </motion.p>
       </section>
     </div>
