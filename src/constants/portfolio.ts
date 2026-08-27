@@ -1,8 +1,7 @@
 export const LINKS = {
   github: "https://github.com/cendra-n",
   linkedin: "https://www.linkedin.com/in/nadia-cendra/",
-  email: "nadia.cendra@example.com",
-  cv: "/cv-nadia-cendra.pdf",
+  email: "cendra.nadia.1345@gmail.com",
 };
 
 export const BRICK_WORDS = [
