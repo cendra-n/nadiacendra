@@ -22,7 +22,7 @@ export const dict = {
       factory: "7 años de trabajo en fábrica",
       intro3:
         " y una etapa emprendedora en venta directa y diseño digital. Todavía estoy creciendo técnicamente. Ese es, justamente, el punto de partida.",
-      hint: "Deslizá el mouse sobre los ladrillos rojos y conoce un poco más sobre mis habilidades",
+      hint: "Deslizá el mouse sobre los ladrillos laterales y conoce un poco más sobre mis habilidades",
     },
     about: {
       eyebrow: "01 · Sobre mí",
@@ -53,8 +53,7 @@ export const dict = {
         {
           period: "2016 — 2023",
           title: "Operaria de fábrica",
-          detail:
-            "Siete años sosteniendo horarios, disciplina, trabajo bajo presión y compromiso con el equipo.",
+          detail: "Siete años sosteniendo horarios, disciplina, trabajo bajo presión y compromiso con el equipo.",
         },
       ],
     },
@@ -117,8 +116,7 @@ export const dict = {
             "Practicar el flujo real de un equipo backend: convenciones, ramas, pull requests y revisiones cruzadas.",
           solution:
             "Sumé código en Spring Boot dentro del sistema del programa, integrada al ritmo de un equipo con seniority mixta.",
-          learned:
-            "Cómo se organiza un equipo backend en la vida real, con revisiones y ritmo compartido.",
+          learned: "Cómo se organiza un equipo backend en la vida real, con revisiones y ritmo compartido.",
         },
         inventario: {
           name: "Sistema de Gestión de Inventario",
@@ -126,10 +124,8 @@ export const dict = {
           context: "Proyecto personal",
           problem:
             "Necesitaba practicar por mi cuenta un CRUD completo: entidades, relaciones, operaciones de stock y pruebas.",
-          solution:
-            "Modelé el dominio, implementé la API, escribí pruebas y sostuve el proyecto de principio a fin.",
-          learned:
-            "Sostener un proyecto sin nadie que me pase el enunciado. Equivocarme, corregir y seguir.",
+          solution: "Modelé el dominio, implementé la API, escribí pruebas y sostuve el proyecto de principio a fin.",
+          learned: "Sostener un proyecto sin nadie que me pase el enunciado. Equivocarme, corregir y seguir.",
         },
       },
     },
@@ -223,8 +219,7 @@ export const dict = {
         {
           period: "2016 — 2023",
           title: "Factory operator",
-          detail:
-            "Seven years holding shifts, discipline, work under pressure and commitment to the team.",
+          detail: "Seven years holding shifts, discipline, work under pressure and commitment to the team.",
         },
       ],
     },
@@ -283,8 +278,7 @@ export const dict = {
           name: "AURA",
           tagline: "Java backend inside an intensive professional practice.",
           context: "Smart Projects — Foo Talent Group",
-          problem:
-            "Practising the real flow of a backend team: conventions, branches, pull requests and peer reviews.",
+          problem: "Practising the real flow of a backend team: conventions, branches, pull requests and peer reviews.",
           solution:
             "I contributed Spring Boot code to the program's system, integrated into the rhythm of a mixed-seniority team.",
           learned: "How a backend team is organised in real life, with reviews and a shared pace.",
@@ -293,12 +287,10 @@ export const dict = {
           name: "Inventory Management System",
           tagline: "A complete CRUD, from scratch, to practise carrying a project through.",
           context: "Personal project",
-          problem:
-            "I needed to practise a full CRUD on my own: entities, relationships, stock operations and tests.",
+          problem: "I needed to practise a full CRUD on my own: entities, relationships, stock operations and tests.",
           solution:
             "I modelled the domain, implemented the API, wrote tests and carried the project from start to finish.",
-          learned:
-            "Carrying a project with nobody handing me the brief. Making mistakes, fixing them and moving on.",
+          learned: "Carrying a project with nobody handing me the brief. Making mistakes, fixing them and moving on.",
         },
       },
     },
