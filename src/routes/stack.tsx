@@ -32,9 +32,9 @@ function SkillItem({ label, index, variant }: { label: string; index: number; va
       transition={{ duration: 0.35, delay: index * 0.04 }}
       whileHover={{ x: 4 }}
       className={
-        "group flex items-center justify-between border-b py-3 font-mono text-sm uppercase tracking-[0.14em] transition-colors " +
+        "group flex items-center justify-between border-b py-3 font-mono text-sm uppercase tracking-[0.14em] transition-all " +
         (variant === "tech"
-          ? "border-foreground/10 text-foreground hover:border-primary hover:text-primary"
+          ? "border-foreground/10 text-foreground hover:border-mint hover:text-mint-ink hover:shadow-[0_4px_16px_-4px_var(--color-mint)]"
           : "border-foreground/10 text-foreground hover:border-primary hover:text-primary")
       }
     >

@@ -63,7 +63,7 @@ function SobreMi() {
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
                 {e.period}
               </p>
-              <h3 className="mt-2 font-display text-xl font-semibold tracking-tight">
+              <h3 className="mt-2 font-display text-xl font-semibold tracking-tight text-mint-ink">
                 {e.title}
               </h3>
               <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-foreground/75">
