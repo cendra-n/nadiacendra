@@ -117,13 +117,6 @@ function Landing() {
 
       {/* Navegación principal — botones grandes */}
       <section className="relative z-20 mx-auto max-w-4xl px-6 pb-24 md:px-10">
-        <div className="mb-6 flex items-center gap-3">
-          <span className="h-px flex-1 bg-mint" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-foreground/50">
-            {t.nav.explore}
-          </span>
-          <span className="h-px flex-1 bg-mint" />
-        </div>
         <div className="grid gap-4 md:grid-cols-3">
           {navLinks.map((n, i) => (
             <motion.div
