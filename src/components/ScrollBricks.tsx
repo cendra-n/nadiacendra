@@ -18,7 +18,13 @@ export function ScrollBricks() {
       {bricks.map((b, i) => (
         <motion.span
           key={i}
-          className="absolute rounded-[1px] bg-primary/10 dark:bg-primary/15"
+          className={`absolute rounded-[1px] ${
+            i % 3 === 0
+              ? "bg-mint/30 dark:bg-mint/20"
+              : i % 3 === 1
+                ? "bg-pink/25 dark:bg-pink/20"
+                : "bg-primary/10 dark:bg-primary/15"
+          }`}
           style={{ left: b.left, top: b.top, width: b.size * 2, height: b.size }}
           animate={{ y: [0, -40, 0], opacity: [0.3, 0.7, 0.3] }}
           transition={{
