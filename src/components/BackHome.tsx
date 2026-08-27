@@ -18,6 +18,7 @@ export function BackHome({ label }: { label?: string }) {
         aria-label={text}
         className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-background/85 px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/80 shadow-[0_2px_12px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-colors hover:border-primary hover:text-primary"
       >
+        <span className="inline-block h-1.5 w-1.5 rounded-full bg-mint transition-colors group-hover:bg-pink" aria-hidden />
         <ArrowLeft
           size={14}
           className="transition-transform group-hover:-translate-x-1"

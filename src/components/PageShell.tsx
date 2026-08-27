@@ -58,7 +58,8 @@ export function PageShell({ children, showBack = true, eyebrow }: Props) {
       >
         {showBack && <BackHome />}
         {eyebrow && (
-          <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
+          <p className="mb-4 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-mint" />
             {eyebrow}
           </p>
         )}
