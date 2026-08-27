@@ -20,7 +20,7 @@ const FRAGMENTS = [
 ];
 
 /**
- * Un ladrillo rojo. Flota lento y en hover "explota"
+ * Un ladrillo . Flota lento y en hover "explota"
  * en fragmentos revelando una palabra clave, luego se reforma.
  */
 export function Brick({
@@ -37,7 +37,12 @@ export function Brick({
   const word = words[wordIndex % words.length];
   const timer = useRef<number | null>(null);
 
-  useEffect(() => () => { if (timer.current) window.clearTimeout(timer.current); }, []);
+  useEffect(
+    () => () => {
+      if (timer.current) window.clearTimeout(timer.current);
+    },
+    [],
+  );
 
   const dims = size === "sm" ? { w: 34, h: 14 } : { w: 54, h: 22 };
 
@@ -54,14 +59,9 @@ export function Brick({
   };
 
   const horizontalAnchor =
-    wordAnchor === "left"
-      ? "left-0"
-      : wordAnchor === "right"
-        ? "right-0"
-        : "left-1/2 -translate-x-1/2";
+    wordAnchor === "left" ? "left-0" : wordAnchor === "right" ? "right-0" : "left-1/2 -translate-x-1/2";
 
-  const safeMaxWidth =
-    wordAnchor === "center" ? "calc(100vw - 32px)" : "calc(100vw - 40px)";
+  const safeMaxWidth = wordAnchor === "center" ? "calc(100vw - 32px)" : "calc(100vw - 40px)";
 
   return (
     <motion.div
