@@ -117,13 +117,24 @@ function Landing() {
 
       {/* Navegación principal — botones grandes */}
       <section className="relative z-20 mx-auto max-w-4xl px-6 pb-24 md:px-10">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mb-8 flex items-center justify-center gap-2 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-primary"
+        >
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-pink" />
+          {t.home.hint}
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-mint" />
+        </motion.p>
+
         <div className="grid gap-4 md:grid-cols-3">
           {navLinks.map((n, i) => (
             <motion.div
               key={n.to}
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.55 + i * 0.08, ease: "easeOut" }}
+              transition={{ duration: 0.45, delay: 0.6 + i * 0.08, ease: "easeOut" }}
             >
               <Link
                 to={n.to}
@@ -141,17 +152,6 @@ function Landing() {
             </motion.div>
           ))}
         </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-16 flex items-center justify-center gap-2 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-primary"
-        >
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-pink" />
-          {t.home.hint}
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-mint" />
-        </motion.p>
       </section>
     </div>
   );
