@@ -16,12 +16,8 @@ export const dict = {
     home: {
       role: "Backend Developer",
       subrole: "Técnica Analista de Sistemas",
-      intro1: "Doy mis primeros pasos profesionales en desarrollo, con cerca de ",
-      months: "5 meses de práctica",
-      intro2: " en simulaciones y entornos IT colaborativos, sostenidos por ",
-      factory: "7 años de trabajo en fábrica",
-      intro3:
-        " y una etapa emprendedora en venta directa y diseño digital. Todavía estoy creciendo técnicamente. Ese es, justamente, el punto de partida.",
+      intro:
+        "Combino curiosidad técnica con una fuerte atención al detalle y capacidad de trabajo en equipo. Ante un desafío, busco alternativas activamente sin perder de vista los tiempos de entrega de los tickets ni del sprint. Priorizo la comunicación asertiva y el feedback continuo para llegar a la mejor solución, alineándome al equipo para alcanzar el éxito colectivo.",
       hint: "Deslizá el mouse sobre los ladrillos laterales y conoce un poco más sobre mis habilidades",
     },
     about: {
@@ -182,13 +178,9 @@ export const dict = {
     home: {
       role: "Backend Developer",
       subrole: "Systems Analyst Technician",
-      intro1: "I'm taking my first professional steps in development, with about ",
-      months: "5 months of hands-on practice",
-      intro2: " in simulations and collaborative IT environments, backed by ",
-      factory: "7 years of factory work",
-      intro3:
-        " and a self-employed stage in direct sales and digital design. I'm still growing technically. That, precisely, is the starting point.",
-      hint: "Hover the red bricks to discover a bit more about my skills",
+      intro:
+        "I combine technical curiosity with strong attention to detail and teamwork. When faced with a challenge, I actively look for alternatives without losing sight of ticket and sprint deadlines. I prioritise assertive communication and continuous feedback to reach the best solution, aligning with the team to achieve collective success.",
+      hint: "Hover the side bricks to discover a bit more about my skills",
     },
     about: {
       eyebrow: "01 · About me",
