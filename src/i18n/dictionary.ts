@@ -21,7 +21,7 @@ export const dict = {
       hint: "Deslizá el mouse sobre los ladrillos laterales y conoce un poco más sobre mis habilidades",
     },
     about: {
-      eyebrow: "01 · Sobre mí",
+      eyebrow: "Sobre mí",
       title1: "Un camino que se construye ",
       title2: "un ladrillo a la vez.",
       timelineLabel: "Línea de tiempo",
@@ -54,7 +54,7 @@ export const dict = {
       ],
     },
     stack: {
-      eyebrow: "02 · Stack & habilidades",
+      eyebrow: "Stack & habilidades",
       title1: "Herramientas ",
       and: "y",
       title2: " personas.",
@@ -75,7 +75,7 @@ export const dict = {
       ],
     },
     projects: {
-      eyebrow: "03 · Proyectos",
+      eyebrow: "Proyectos",
       title1: "Pocos proyectos, ",
       title2: "contados con honestidad.",
       lead: "Prefiero mostrar cómo pienso y trabajo antes que inflar resultados.",
@@ -191,7 +191,7 @@ export const dict = {
       hint: "Hover the side bricks to discover a bit more about my skills",
     },
     about: {
-      eyebrow: "01 · About me",
+      eyebrow: "About me",
       title1: "A path built ",
       title2: "one brick at a time.",
       timelineLabel: "Timeline",
@@ -224,7 +224,7 @@ export const dict = {
       ],
     },
     stack: {
-      eyebrow: "02 · Stack & skills",
+      eyebrow: "Stack & skills",
       title1: "Tools ",
       and: "and",
       title2: " people.",
@@ -245,7 +245,7 @@ export const dict = {
       ],
     },
     projects: {
-      eyebrow: "03 · Projects",
+      eyebrow: "Projects",
       title1: "A few projects, ",
       title2: "told honestly.",
       lead: "I'd rather show how I think and work than inflate results.",
