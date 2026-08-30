@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
-import { ScrollBricks } from "./ScrollBricks";
 import { BackHome } from "./BackHome";
 import { LINKS } from "@/constants/portfolio";
 import { useI18n } from "@/i18n/LanguageProvider";
@@ -18,8 +17,6 @@ export function PageShell({ children, showBack = true, eyebrow }: Props) {
   const { t } = useI18n();
   return (
     <div className="relative min-h-screen bg-background text-foreground antialiased">
-      <ScrollBricks />
-
       <header className="relative z-30 mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-6 md:px-10">
         <Link
           to="/"

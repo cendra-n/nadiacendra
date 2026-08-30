@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { BrickColumns } from "@/components/BrickColumns";
-import { ScrollBricks } from "@/components/ScrollBricks";
+import { GhostCursor } from "@/components/GhostCursor";
 import { LINKS } from "@/constants/portfolio";
 import { useI18n } from "@/i18n/LanguageProvider";
 
@@ -38,7 +38,7 @@ function Landing() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground antialiased">
-      <ScrollBricks />
+      <GhostCursor trailLength={50} inertia={0.5} fadeDelayMs={1000} fadeDurationMs={1500} />
       <BrickColumns />
 
       {/* Header */}
