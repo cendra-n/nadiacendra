@@ -38,7 +38,7 @@ function Landing() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground antialiased">
-      <GhostCursor trailLength={50} inertia={0.5} fadeDelayMs={1000} fadeDurationMs={1500} />
+      <CursorGrid cellSize={70} radius={140} holdTime={400} fadeDuration={800} lineWidth={1.2} maxOpacity={1} clickPulse pulseSpeed={600} />
       <BrickColumns />
 
       {/* Header */}
