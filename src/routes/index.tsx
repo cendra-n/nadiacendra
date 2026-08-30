@@ -107,11 +107,7 @@ function Landing() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="mx-auto mt-10 max-w-xl text-[15px] leading-relaxed text-foreground/80 md:text-base"
         >
-          {t.home.intro1}
-          <strong className="font-semibold text-foreground">{t.home.months}</strong>
-          {t.home.intro2}
-          <strong className="font-semibold text-foreground">{t.home.factory}</strong>
-          {t.home.intro3}
+          {t.home.intro}
         </motion.p>
       </section>
 
