@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
-import { ScrollBricks } from "./ScrollBricks";
 import { BackHome } from "./BackHome";
 import { LINKS } from "@/constants/portfolio";
 import { useI18n } from "@/i18n/LanguageProvider";
