@@ -122,9 +122,10 @@ export function GhostCursor({
           if (age >= 1) continue;
           const a = (1 - age) * 0.35 * globalAlpha;
           const r = p.size * (1 - age * 0.6);
+          const base = primary.slice(0, -1); // quita el ")" final
           const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
-          g.addColorStop(0, primary.replace(")", ` / ${a})`).replace("rgb", "rgb").replace("oklch", "oklch"));
-          g.addColorStop(1, primary.replace(")", " / 0)"));
+          g.addColorStop(0, `${base} / ${a})`);
+          g.addColorStop(1, `${base} / 0)`);
           ctx.fillStyle = g;
           ctx.beginPath();
           ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
