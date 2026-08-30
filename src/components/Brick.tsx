@@ -8,6 +8,12 @@ interface BrickProps {
   driftAmplitude?: number;
   delay?: number;
   wordAnchor?: "left" | "center" | "right";
+  /**
+   * Registro compartido entre los ladrillos de una columna.
+   * Cada ladrillo "reserva" su índice de palabra para que ninguna
+   * palabra se repita dentro de la misma columna.
+   */
+  usedWords?: Set<number>;
 }
 
 const FRAGMENTS = [
@@ -19,8 +25,25 @@ const FRAGMENTS = [
   { x: 0, y: 22, r: -10 },
 ];
 
+/** Elige un índice al azar que no esté reservado en `used` ni sea `exclude`. */
+function pickIndex(wordsLength: number, used: Set<number> | undefined, exclude?: number): number {
+  const available: number[] = [];
+  for (let i = 0; i < wordsLength; i++) {
+    if (i === exclude) continue;
+    if (used && used.has(i)) continue;
+    available.push(i);
+  }
+  if (available.length === 0) {
+    // Todas reservadas: caer a cualquiera distinta de exclude
+    let next = Math.floor(Math.random() * wordsLength);
+    if (exclude !== undefined) while (next === exclude) next = Math.floor(Math.random() * wordsLength);
+    return next;
+  }
+  return available[Math.floor(Math.random() * available.length)];
+}
+
 /**
- * Un ladrillo . Flota lento y en hover "explota"
+ * Un ladrillo. Flota lento y en hover "explota"
  * en fragmentos revelando una palabra clave, luego se reforma.
  */
 export function Brick({
@@ -29,28 +52,41 @@ export function Brick({
   driftAmplitude = 18,
   delay = 0,
   wordAnchor = "center",
+  usedWords,
 }: BrickProps) {
   const { t } = useI18n();
   const words = t.brickWords;
   const [exploded, setExploded] = useState(false);
-  const [wordIndex, setWordIndex] = useState(() => Math.floor(Math.random() * words.length));
+  const [wordIndex, setWordIndex] = useState<number>(() => {
+    const idx = pickIndex(words.length, usedWords);
+    usedWords?.add(idx);
+    return idx;
+  });
   const word = words[wordIndex % words.length];
   const timer = useRef<number | null>(null);
+  const indexRef = useRef(wordIndex);
+  indexRef.current = wordIndex;
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    // Reservar el índice inicial por si el registro llegó después del primer render
+    usedWords?.add(wordIndex);
+    return () => {
       if (timer.current) window.clearTimeout(timer.current);
-    },
-    [],
-  );
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const dims = size === "sm" ? { w: 34, h: 14 } : { w: 54, h: 22 };
 
   const trigger = () => {
     if (exploded) return;
-    // Elegir una palabra distinta a la anterior en este mismo ladrillo
-    let next = wordIndex;
-    while (next === wordIndex) next = Math.floor(Math.random() * words.length);
+    const current = indexRef.current;
+    // Elegir una palabra distinta a la actual y que no esté en uso en la columna
+    const next = pickIndex(words.length, usedWords, current);
+    if (usedWords) {
+      usedWords.delete(current);
+      usedWords.add(next);
+    }
     setWordIndex(next);
     setExploded(true);
     if (timer.current) window.clearTimeout(timer.current);
