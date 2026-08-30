@@ -74,7 +74,7 @@ function Landing() {
       </motion.header>
 
       {/* Hero central */}
-      <section className="relative z-20 mx-auto max-w-3xl px-6 pb-16 pt-14 text-center md:px-10 md:pt-24">
+      <section className="relative z-20 mx-auto max-w-3xl px-6 pb-10 pt-6 text-center md:px-10 md:pt-10">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -105,14 +105,14 @@ function Landing() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="mx-auto mt-10 max-w-xl text-[15px] leading-relaxed text-foreground/80 md:text-base"
+          className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-foreground/80 md:text-base"
         >
           {t.home.intro}
         </motion.p>
       </section>
 
       {/* Navegación principal — botones grandes */}
-      <section className="relative z-20 mx-auto max-w-4xl px-6 pb-24 md:px-10">
+      <section className="relative z-20 mx-auto max-w-4xl px-6 pb-16 md:px-10">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
