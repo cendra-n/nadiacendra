@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { BrickColumns } from "@/components/BrickColumns";
-import { GhostCursor } from "@/components/GhostCursor";
+import { CursorGrid } from "@/components/CursorGrid";
 import { LINKS } from "@/constants/portfolio";
 import { useI18n } from "@/i18n/LanguageProvider";
 
