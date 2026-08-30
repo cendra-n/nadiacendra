@@ -33,7 +33,7 @@ export function Brick({
   const { t } = useI18n();
   const words = t.brickWords;
   const [exploded, setExploded] = useState(false);
-  const [wordIndex, setWordIndex] = useState(() => Math.floor(Math.random() * 13));
+  const [wordIndex, setWordIndex] = useState(() => Math.floor(Math.random() * words.length));
   const word = words[wordIndex % words.length];
   const timer = useRef<number | null>(null);
 
