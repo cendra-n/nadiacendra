@@ -4,7 +4,7 @@ import { PageShell } from "@/components/PageShell";
 import { PROJECTS } from "@/constants/portfolio";
 import { useI18n } from "@/i18n/LanguageProvider";
 
-export const Route = createFileRoute("/proyectos")({
+export const Route = createFileRoute("/proyectos/")({
   head: () => ({
     meta: [
       { title: "Proyectos — Nadia Cendra" },
