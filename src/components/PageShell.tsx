@@ -29,7 +29,7 @@ export function PageShell({ children, eyebrow }: Props) {
           <nav className="flex flex-wrap items-center gap-2 md:gap-2.5">
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 rounded-full border border-foreground/20 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/80 transition-colors hover:border-primary hover:text-primary"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-foreground/20 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/80 transition-colors hover:border-primary hover:text-primary"
               aria-label={t.nav.back}
             >
               <ArrowLeft size={13} className="text-primary transition-transform group-hover:-translate-x-1" />
