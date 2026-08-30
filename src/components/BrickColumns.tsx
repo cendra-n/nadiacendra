@@ -1,10 +1,19 @@
+import { useMemo } from "react";
+import { useI18n } from "@/i18n/LanguageProvider";
 import { Brick } from "./Brick";
 
 /**
  * Dos columnas de ladrillos flotantes, uno a cada lado de la pantalla.
  * Cada ladrillo tiene su propia velocidad y desfase — nunca sincronizados.
+ * Cada columna comparte un registro de palabras usadas para que ninguna
+ * se repita entre sus 7 ladrillos.
  */
 export function BrickColumns() {
+  const { t } = useI18n();
+  // Un registro por columna; se recrea si cambia el idioma (y con él la lista)
+  const leftUsed = useMemo(() => new Set<number>(), [t.brickWords]);
+  const rightUsed = useMemo(() => new Set<number>(), [t.brickWords]);
+
   const left = Array.from({ length: 7 }, (_, i) => ({
     duration: 7 + ((i * 1.7) % 5),
     delay: (i * 0.83) % 4,
@@ -30,6 +39,7 @@ export function BrickColumns() {
               delay={b.delay}
               driftAmplitude={b.amplitude}
               wordAnchor="left"
+              usedWords={leftUsed}
             />
           ))}
         </div>
@@ -46,6 +56,7 @@ export function BrickColumns() {
               delay={b.delay}
               driftAmplitude={b.amplitude}
               wordAnchor="right"
+              usedWords={rightUsed}
             />
           ))}
         </div>
