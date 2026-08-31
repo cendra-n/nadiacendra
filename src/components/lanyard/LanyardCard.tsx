@@ -19,7 +19,7 @@ export function LanyardCard() {
     >
       <div className="pointer-events-auto h-full w-full">
         <Suspense fallback={null}>
-          <Lanyard position={[1.2, 0, 18]} gravity={[0, -40, 0]} fov={22} imageFit="contain" lanyardWidth={1.2} />
+          <Lanyard position={[2.1, 0, 18]} gravity={[0, -40, 0]} fov={22} imageFit="contain" lanyardWidth={1.2} />
         </Suspense>
       </div>
     </div>
