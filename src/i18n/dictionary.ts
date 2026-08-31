@@ -136,7 +136,9 @@ export const dict = {
       subject: "Asunto",
       message: "Mensaje",
       send: "Enviar mensaje",
+      sending: "Enviando…",
       sent: "¡Mensaje enviado correctamente!",
+      sendError: "No se pudo enviar el mensaje. Intentá de nuevo.",
       asideTitle: "O escribime por acá",
       bookMeeting: "Agendar una cita",
       placeholders: {
@@ -314,7 +316,9 @@ export const dict = {
       subject: "Subject",
       message: "Message",
       send: "Send message",
+      sending: "Sending…",
       sent: "Message sent successfully!",
+      sendError: "The message could not be sent. Please try again.",
       asideTitle: "Or reach me here",
       bookMeeting: "Book a meeting",
       placeholders: {
