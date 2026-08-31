@@ -67,7 +67,6 @@ function Contacto() {
 
   const onSubmit = (ev: React.FormEvent) => {
     ev.preventDefault();
-    setTouched(true);
     const parsed = schema.safeParse(values);
     if (!parsed.success) {
       const errs: Partial<Record<Field, string>> = {};
@@ -85,7 +84,6 @@ function Contacto() {
     )}&body=${encodeURIComponent(body)}`;
     setValues({ nombre: "", email: "", asunto: "", mensaje: "" });
     setErrors({});
-    setTouched(false);
     toast.success(t.contact.sent);
   };
 
