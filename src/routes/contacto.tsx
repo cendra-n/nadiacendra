@@ -183,7 +183,7 @@ function Contacto() {
             whileHover={isValid ? { scale: 1.02 } : undefined}
             whileTap={isValid ? { scale: 0.98 } : undefined}
             type="submit"
-            disabled={touched ? !isValid : false}
+            disabled={!isValid}
             aria-disabled={!isValid}
             className="inline-flex items-center gap-2 bg-primary px-6 py-2.5 font-mono text-[11px] uppercase tracking-[0.24em] text-primary-foreground transition-all hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-primary disabled:hover:text-primary-foreground"
           >
