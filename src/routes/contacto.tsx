@@ -56,6 +56,7 @@ function Contacto() {
     mensaje: "",
   });
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
+  const [sending, setSending] = useState(false);
 
   const isValid = schema.safeParse(values).success;
 
@@ -64,7 +65,7 @@ function Contacto() {
     if (errors[f]) setErrors((prev) => ({ ...prev, [f]: undefined }));
   };
 
-  const onSubmit = (ev: React.FormEvent) => {
+  const onSubmit = async (ev: React.FormEvent) => {
     ev.preventDefault();
     const parsed = schema.safeParse(values);
     if (!parsed.success) {
@@ -76,14 +77,17 @@ function Contacto() {
       setErrors(errs);
       return;
     }
-    // Sin backend: abrimos el cliente de email con destino cendra.nadia.1345@gmail.com.
-    const body = `${parsed.data.mensaje}\n\n— ${parsed.data.nombre}`;
-    window.location.href = `mailto:${LINKS.email}?subject=${encodeURIComponent(
-      parsed.data.asunto
-    )}&body=${encodeURIComponent(body)}`;
-    setValues({ nombre: "", email: "", asunto: "", mensaje: "" });
-    setErrors({});
-    toast.success(t.contact.sent);
+    setSending(true);
+    try {
+      await sendContactMessage({ data: parsed.data });
+      setValues({ nombre: "", email: "", asunto: "", mensaje: "" });
+      setErrors({});
+      toast.success(t.contact.sent);
+    } catch {
+      toast.error(t.contact.sendError);
+    } finally {
+      setSending(false);
+    }
   };
 
   const fieldCls =
