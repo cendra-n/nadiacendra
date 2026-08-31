@@ -340,21 +340,23 @@ function Band({
       </group>
       <mesh ref={band}>
         <meshLineGeometry />
-        <meshLineMaterial
-          {...({
-            args: [{}],
-            color: "white",
-            depthTest: false,
-            resolution: isMobile ? [1000, 2000] : [1000, 1000],
-            useMap: true,
-            map: texture,
-            repeat: [-4, 1],
-            lineWidth: lanyardWidth,
-          } as Record<string, unknown>)}
+        <MeshLineMaterialAny
+          args={[{}]}
+          color="white"
+          depthTest={false}
+          resolution={isMobile ? [1000, 2000] : [1000, 1000]}
+          useMap
+          map={texture}
+          repeat={[-4, 1]}
+          lineWidth={lanyardWidth}
         />
       </mesh>
     </>
   );
 }
+
+// meshline ships no usable typings for its R3F element props — bypass.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MeshLineMaterialAny = "meshLineMaterial" as any;
 
 useGLTF.preload(cardGLB);
