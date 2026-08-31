@@ -111,7 +111,7 @@ function Contacto() {
         {t.contact.lead}
       </p>
 
-      <div className="mt-10 grid gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16 lg:pr-32 xl:pr-36">
+      <div className="mt-10 grid gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16 lg:pr-56 xl:pr-64">
         <motion.form
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
