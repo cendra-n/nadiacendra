@@ -7,6 +7,7 @@ import { PageShell } from "@/components/PageShell";
 import { LINKS } from "@/constants/portfolio";
 import { useI18n } from "@/i18n/LanguageProvider";
 import { sendContactMessage } from "@/lib/contact.functions";
+import { LanyardCard } from "@/components/lanyard/LanyardCard";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -228,6 +229,7 @@ function Contacto() {
           </ul>
         </motion.aside>
       </div>
+      <LanyardCard />
     </PageShell>
   );
 }
