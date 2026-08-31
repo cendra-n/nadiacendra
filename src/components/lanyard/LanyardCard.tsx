@@ -9,7 +9,7 @@ const THEMES = {
   dark: { bg: "#FCB4C0", text: "#4A0A1C", accent: "#740323", wave: "#C1E3D5" },
 } as const;
 
-function buildFrontTexture(dark: boolean, lines: string[]): string {
+function buildFrontTexture(dark: boolean, lines: readonly string[]): string {
   const c = THEMES[dark ? "dark" : "light"];
   const canvas = document.createElement("canvas");
   canvas.width = 1024;
