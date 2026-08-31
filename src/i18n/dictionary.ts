@@ -139,7 +139,7 @@ export const dict = {
       sending: "Enviando…",
       sent: "¡Mensaje enviado correctamente!",
       sendError: "No se pudo enviar el mensaje. Intentá de nuevo.",
-      asideTitle: "O escribime por acá",
+      asideTitle: "O CONTÁCTAME POR ACÁ",
       bookMeeting: "Agendar una cita",
       placeholders: {
         name: "Escribí tu nombre y apellido",
