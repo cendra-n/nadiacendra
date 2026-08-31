@@ -79,7 +79,7 @@ export function LanyardCard() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed bottom-0 right-0 top-20 z-10 hidden w-[240px] lg:block xl:w-[280px]"
+      className="pointer-events-none fixed bottom-0 right-2 top-20 z-10 hidden w-[210px] lg:block xl:w-[230px]"
     >
       <div className="pointer-events-auto h-full w-full">
         <Suspense fallback={null}>
