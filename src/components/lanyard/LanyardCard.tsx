@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
+import { useI18n } from "@/i18n/LanguageProvider";
 
 const Lanyard = lazy(() => import("./Lanyard"));
 
@@ -8,7 +9,7 @@ const THEMES = {
   dark: { bg: "#FCB4C0", text: "#4A0A1C", accent: "#740323", wave: "#C1E3D5" },
 } as const;
 
-function buildFrontTexture(dark: boolean): string {
+function buildFrontTexture(dark: boolean, lines: string[]): string {
   const c = THEMES[dark ? "dark" : "light"];
   const canvas = document.createElement("canvas");
   canvas.width = 1024;
@@ -46,7 +47,6 @@ function buildFrontTexture(dark: boolean): string {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.font = '700 118px "Space Grotesk", sans-serif';
-  const lines = ["Gracias", "por visitar", "mi portfolio."];
   lines.forEach((line, i) => {
     ctx.fillText(line, 512, 620 + i * 140);
   });
@@ -59,18 +59,20 @@ function buildFrontTexture(dark: boolean): string {
  * The card face is generated on the fly so it follows the active color theme.
  */
 export function LanyardCard() {
+  const { t } = useI18n();
+  const lines = t.contact.lanyardLines;
   const [mounted, setMounted] = useState(false);
   const [frontImage, setFrontImage] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
     const build = () =>
-      setFrontImage(buildFrontTexture(document.documentElement.classList.contains("dark")));
+      setFrontImage(buildFrontTexture(document.documentElement.classList.contains("dark"), lines));
     build();
     const observer = new MutationObserver(build);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
-  }, []);
+  }, [lines]);
 
   if (!mounted || !frontImage) return null;
 
