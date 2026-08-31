@@ -229,10 +229,10 @@ function Band({
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([
-        new THREE.Vector3(0, 4, 0),
-        new THREE.Vector3(0.5, 4, 0),
-        new THREE.Vector3(1, 4, 0),
-        new THREE.Vector3(1.5, 4, 0),
+        new THREE.Vector3(0, 3.9, 0.05),
+        new THREE.Vector3(0.5, 4.05, -0.04),
+        new THREE.Vector3(1, 3.95, 0.03),
+        new THREE.Vector3(1.5, 4.02, -0.05),
       ])
   );
   const [dragged, drag] = useState<false | THREE.Vector3>(false);
