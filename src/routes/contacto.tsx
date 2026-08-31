@@ -122,7 +122,7 @@ function Contacto() {
           aria-label={t.contact.formLabel}
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/50">
-            Nota: si no se completan todos los campos no se podrá enviar el mail
+            {t.contact.formNote}
           </p>
           {(["nombre", "email", "asunto"] as const).map((f) => (
             <div key={f}>
