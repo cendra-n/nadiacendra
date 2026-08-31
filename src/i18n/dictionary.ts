@@ -138,6 +138,7 @@ export const dict = {
       send: "Enviar mensaje",
       sent: "Se abrió tu cliente de email. ¡Gracias!",
       asideTitle: "O escribime por acá",
+      bookMeeting: "Agendar una cita",
       errors: {
         name: "Contame tu nombre",
         emailInvalid: "Email inválido",
@@ -307,6 +308,7 @@ export const dict = {
       send: "Send message",
       sent: "Your email client just opened. Thank you!",
       asideTitle: "Or reach me here",
+      bookMeeting: "Book a meeting",
       errors: {
         name: "Tell me your name",
         emailInvalid: "Invalid email",
