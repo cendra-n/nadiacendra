@@ -141,6 +141,7 @@ export const dict = {
       sendError: "No se pudo enviar el mensaje. Intentá de nuevo.",
       asideTitle: "O CONTÁCTAME POR ACÁ",
       bookMeeting: "Agendar una cita",
+      lanyardLines: ["Gracias", "por visitar", "mi portfolio."],
       placeholders: {
         name: "Escribí tu nombre y apellido",
         email: "ejemplo@correo.com",
@@ -321,6 +322,7 @@ export const dict = {
       sendError: "The message could not be sent. Please try again.",
       asideTitle: "Or reach me here",
       bookMeeting: "Book a meeting",
+      lanyardLines: ["Thanks", "for visiting", "my portfolio."],
       placeholders: {
         name: "Type your full name",
         email: "example@email.com",
