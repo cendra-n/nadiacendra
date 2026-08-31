@@ -211,7 +211,8 @@ function Band({
     };
 
     if (frontTex.image) drawFitted(frontTex.image, FRONT_UV_RECT);
-    if (backTex.image && backTex.image.width > 1) drawFitted(backTex.image, BACK_UV_RECT);
+    const backImg = backTex.image as { width?: number } | undefined;
+    if (backImg && (backImg.width ?? 0) > 1) drawFitted(backImg, BACK_UV_RECT);
 
     const composite = new THREE.CanvasTexture(canvas);
     composite.colorSpace = THREE.SRGBColorSpace;
@@ -340,13 +341,15 @@ function Band({
       <mesh ref={band}>
         <meshLineGeometry />
         <meshLineMaterial
-          color="white"
-          depthTest={false}
-          resolution={isMobile ? [1000, 2000] : [1000, 1000]}
-          useMap
-          map={texture}
-          repeat={[-4, 1]}
-          lineWidth={lanyardWidth}
+          {...({
+            color: "white",
+            depthTest: false,
+            resolution: isMobile ? [1000, 2000] : [1000, 1000],
+            useMap: true,
+            map: texture,
+            repeat: [-4, 1],
+            lineWidth: lanyardWidth,
+          } as Record<string, unknown>)}
         />
       </mesh>
     </>
