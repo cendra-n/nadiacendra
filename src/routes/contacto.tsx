@@ -229,6 +229,7 @@ function Contacto() {
           </ul>
         </motion.aside>
       </div>
+      <LanyardCard />
     </PageShell>
   );
 }
