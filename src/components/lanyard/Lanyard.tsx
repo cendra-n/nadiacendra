@@ -46,6 +46,7 @@ interface LanyardProps {
   transparent?: boolean;
   imageFit?: "cover" | "contain";
   lanyardWidth?: number;
+  frontImage?: string;
 }
 
 export default function Lanyard({
@@ -55,6 +56,7 @@ export default function Lanyard({
   transparent = true,
   imageFit = "cover",
   lanyardWidth = 1,
+  frontImage: frontImageProp,
 }: LanyardProps) {
   const [isMobile, setIsMobile] = useState<boolean>(
     () => typeof window !== "undefined" && window.innerWidth < 768
@@ -86,7 +88,7 @@ export default function Lanyard({
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-          <Band isMobile={isMobile} imageFit={imageFit} lanyardWidth={lanyardWidth} />
+          <Band isMobile={isMobile} imageFit={imageFit} lanyardWidth={lanyardWidth} frontImage={frontImageProp} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
@@ -129,6 +131,7 @@ interface BandProps {
   isMobile?: boolean;
   imageFit?: "cover" | "contain";
   lanyardWidth?: number;
+  frontImage?: string;
 }
 
 type LanyardRigidBody = RapierRigidBody & {
@@ -141,6 +144,7 @@ function Band({
   isMobile = false,
   imageFit = "cover",
   lanyardWidth = 1,
+  frontImage: frontImageProp,
 }: BandProps) {
   const band = useRef<
     THREE.Mesh<InstanceType<typeof MeshLineGeometry>, InstanceType<typeof MeshLineMaterial>>
@@ -174,7 +178,7 @@ function Band({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes, materials } = useGLTF(cardGLB) as any;
   const texture = useTexture(lanyard);
-  const frontTex = useTexture(frontImage || BLANK_PIXEL);
+  const frontTex = useTexture(frontImageProp || frontImage || BLANK_PIXEL);
   const backTex = useTexture(BLANK_PIXEL);
 
   const cardMap = useMemo(() => {
@@ -225,10 +229,10 @@ function Band({
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([
-        new THREE.Vector3(),
-        new THREE.Vector3(),
-        new THREE.Vector3(),
-        new THREE.Vector3(),
+        new THREE.Vector3(0, 3.9, 0.05),
+        new THREE.Vector3(0.5, 4.05, -0.04),
+        new THREE.Vector3(1, 3.95, 0.03),
+        new THREE.Vector3(1.5, 4.02, -0.05),
       ])
   );
   const [dragged, drag] = useState<false | THREE.Vector3>(false);
@@ -279,7 +283,14 @@ function Band({
       curve.points[1].copy(getLerped(j2.current));
       curve.points[2].copy(getLerped(j1.current));
       curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 32));
+      const pts = curve.getPoints(isMobile ? 16 : 32);
+      const allFinite = pts.every((p) => Number.isFinite(p.x) && Number.isFinite(p.y) && Number.isFinite(p.z));
+      const spread =
+        curve.points[1].distanceTo(curve.points[2]) > 1e-4 &&
+        curve.points[2].distanceTo(curve.points[3]) > 1e-4;
+      if (allFinite && spread) {
+        band.current.geometry.setPoints(pts);
+      }
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
       card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z }, true);
@@ -338,7 +349,15 @@ function Band({
           </group>
         </RigidBody>
       </group>
-      <mesh ref={band}>
+      <mesh
+        ref={(m) => {
+          if (m) {
+            band.current = m as unknown as typeof band.current;
+            m.raycast = () => {}; // drag targets the card only; avoids NaN bounding-sphere warnings
+          }
+        }}
+        frustumCulled={false}
+      >
         <meshLineGeometry />
         <MeshLineMaterialAny
           args={[{}]}
