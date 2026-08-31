@@ -56,7 +56,6 @@ function Contacto() {
     mensaje: "",
   });
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
-  const [touched, setTouched] = useState(false);
 
   const isValid = schema.safeParse(values).success;
 
