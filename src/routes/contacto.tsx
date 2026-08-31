@@ -172,9 +172,9 @@ function Contacto() {
           </p>
           <ul className="space-y-4 font-mono text-[12px] uppercase tracking-[0.2em]">
             {[
-              ["Email", `mailto:${LINKS.email}`],
               ["LinkedIn", LINKS.linkedin],
               ["GitHub", LINKS.github],
+              [t.contact.bookMeeting, LINKS.calendar],
             ].map(([label, href]) => (
               <li key={label}>
                 <a
