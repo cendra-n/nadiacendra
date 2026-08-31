@@ -2,6 +2,7 @@ export const LINKS = {
   github: "https://github.com/cendra-n",
   linkedin: "https://www.linkedin.com/in/nadia-cendra/",
   email: "cendra.nadia.1345@gmail.com",
+  calendar: "https://calendar.app.google/GTWka99SzLVzzYo37",
 };
 
 export const BRICK_WORDS = [
